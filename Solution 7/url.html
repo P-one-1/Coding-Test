@@ -1,0 +1,36 @@
+<html>
+<head>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+<script type="text/javascript">
+
+$(function(){
+  $("form").on("submit",function(e){
+    e.preventDefault(); // or make the button it type="button:
+    var data = $(this).serialize();
+    $.ajax({
+      url: "http://www.example.com/api/get/1", // or $(this).attr("action"),
+      type: "GET",
+      data: data,
+      success: On_success,
+      error: On_error
+    });
+  });
+});
+function On_success(response){
+    $("#show").html(response);
+}
+
+function On_error(data){
+   console.log(data);
+}      
+
+  </script>
+ </head>
+ <body>
+
+ <form>
+ <input type="submit" id="but">
+ </form>
+ <p id="show"></p>
+ </body>
+ </html>
